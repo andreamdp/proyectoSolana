@@ -12,12 +12,12 @@ MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': 'solanaABM012',                      # Or path to database file if using sqlite3.
-#        'USER': 'root',                      # Not used with sqlite3.
-#        'PASSWORD': 'root',                  # Not used with sqlite3.
-#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -76,15 +76,15 @@ STATIC_URL = '/static/'
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 #ADMIN_MEDIA_PREFIX = '/static/admin/'# --volver a poner si anda mal grappelli
-#ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
-ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
+#ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
 # Additional locations of static files
 
 STATICFILES_DIRS = (
-  # "C:\solanaABM012\static",
+  
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   # '/usr/local/lib/python2.6/dist-packages/django_grappelli-2.3.5-py2.6.egg/grappelli/static/grappelli',
+    '/usr/local/lib/python2.6/dist-packages/django_grappelli-2.3.5-py2.6.egg/grappelli/static/grappelli',
 )
 
 # List of finder classes that know how to find static files in
@@ -116,17 +116,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'#solanaABM012.urls
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-  #  '/home/andrea/solanaABM012/templates',
-    '/home/andrea/solanaABM012/templates',
-    #"C:/solanaABM012/grappelli/templates",
-   # "c:/solanaABM012/templates",
-    
-    # '/home/andrea/solanaABM012/treemenus/templates/admin/treemenus/menu',
-  #   '/home/andrea/solanaABM012/templates/admin/edit_inline',
-      
+ 
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
 		'django.contrib.auth.context_processors.auth',
@@ -150,8 +140,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'grappelli.context_processors.admin_template_path',
 )
 INSTALLED_APPS = (
-   # 'auth',
-    'django.contrib.auth',
+    'auth',
+   # 'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -169,7 +159,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
- #   'south',
+    'south',
 )
 
 GRAPPELLI_ADMIN_TITLE = 'Solana SRL'

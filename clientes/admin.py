@@ -4,6 +4,8 @@ from django.contrib.auth import models
 from sistema.models import *
 from clientes.models import *
 from django.forms import TextInput, Textarea
+from pruebas.models import *
+from pruebas.admin import *
 
 class TelefonoInline(admin.TabularInline):
     model = Telefono
@@ -168,6 +170,6 @@ admin.site.register(Cobro)
 admin.site.register(ConjuntoObra,ConjuntoObraOptions)
 admin.site.register(Cliente,ClienteOptions)
 admin.site.register(ConjuntoCosto,ConjuntoCostoOptions)
-
+admin.site.register(Presupuesto,PresupuestoOptions)
 
 

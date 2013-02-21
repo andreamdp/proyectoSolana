@@ -406,6 +406,18 @@ class User(models.Model):
         return self._message_set
     message_set = property(_get_message_set)
 
+class Usuario(User):
+   Grupochoice = (
+        ('Director de Obra', 'Director de Obra'),
+        
+   )
+
+   grupo = models.CharField(max_length=30, choices=Grupochoice, blank=True, null=True) 	
+   #def save_model(self, request, obj, form, change):
+   #     if request.user.is_superuser:
+   #         obj.is_staff = True
+   #         obj.save()
+	
 class Message(models.Model):
     """
     The message system is a lightweight way to queue messages for given

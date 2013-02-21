@@ -93,8 +93,8 @@ from django.contrib.auth.models import User
 
 
 
-admin.site.register(Presupuesto,PresupuestoOptions)
+#admin.site.register(Presupuesto,PresupuestoOptions)
 admin.site.register(Categoria)
 admin.site.register(SubCategoria, SubCategoriaAdmin)
-#admin.site.register(B,B_Admin)
-admin.site.register(Detalle, DetalleAdmin)
+##admin.site.register(B,B_Admin)
+#admin.site.register(Detalle, DetalleAdmin)

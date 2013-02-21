@@ -44,10 +44,10 @@ class Migration(SchemaMigration):
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
             ('is_superuser', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
             ('is_staff', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
-            ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2013, 2, 20, 9, 8, 34, 415317))),
+            ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2013, 2, 21, 17, 14, 52, 655788))),
             ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('date_joined', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2013, 2, 20, 9, 8, 34, 415465))),
+            ('date_joined', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2013, 2, 21, 17, 14, 52, 655932))),
         ))
         db.send_create_signal('auth', ['User'])
 
@@ -66,6 +66,13 @@ class Migration(SchemaMigration):
             ('group', models.ForeignKey(orm['auth.group'], null=False))
         ))
         db.create_unique('auth_user_groups', ['user_id', 'group_id'])
+
+        # Adding model 'Usuario'
+        db.create_table('auth_usuario', (
+            ('user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
+            ('grupo', self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True)),
+        ))
+        db.send_create_signal('auth', ['Usuario'])
 
         # Adding model 'Message'
         db.create_table('auth_message', (
@@ -99,6 +106,9 @@ class Migration(SchemaMigration):
         # Removing M2M table for field groups on 'User'
         db.delete_table('auth_user_groups')
 
+        # Deleting model 'Usuario'
+        db.delete_table('auth_usuario')
+
         # Deleting model 'Message'
         db.delete_table('auth_message')
     
@@ -125,7 +135,7 @@ class Migration(SchemaMigration):
         },
         'auth.user': {
             'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 2, 20, 9, 8, 34, 423357)'}),
+            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 2, 21, 17, 14, 52, 665781)'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -133,11 +143,16 @@ class Migration(SchemaMigration):
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True', 'blank': 'True'}),
             'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 2, 20, 9, 8, 34, 423220)'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 2, 21, 17, 14, 52, 665639)'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
+        },
+        'auth.usuario': {
+            'Meta': {'object_name': 'Usuario', '_ormbases': ['auth.User']},
+            'grupo': ('django.db.models.fields.CharField', [], {'max_length': '30', 'null': 'True', 'blank': 'True'}),
+            'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
         },
         'contenttypes.contenttype': {
             'Meta': {'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
