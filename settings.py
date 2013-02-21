@@ -150,7 +150,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'grappelli.context_processors.admin_template_path',
 )
 INSTALLED_APPS = (
-    'auth',
+   # 'auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
