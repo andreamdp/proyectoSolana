@@ -20,9 +20,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     #url('^/$', redirect_to, {'url': '/admin', 'permanent': False}),
-    #url(r'/$', include(admin.site.urls)),
+    url(r'/$', include(admin.site.urls)),
    # url(r'^admin/treemenus/', include('treemenus.admin_urls')), 
-    url(r'^admin/', include(admin.site.urls)),
+#    url(r'^admin/', include(admin.site.urls)),
 #    url(r'^login/', include(auth.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
