@@ -141,7 +141,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 INSTALLED_APPS = (
     'auth0',
-   # 'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
