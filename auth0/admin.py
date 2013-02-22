@@ -1,9 +1,9 @@
 from django.db import transaction
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.auth.forms import (UserCreationForm, UserChangeForm,
+from auth0.forms import (UserCreationForm, UserChangeForm,
     AdminPasswordChangeForm)
-from django.contrib.auth.models import User, Group
+from auth0.models import User, Group
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect, Http404
@@ -15,7 +15,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
-from auth.models import Usuario
+from auth0.models import Usuario
 csrf_protect_m = method_decorator(csrf_protect)
 
 class GroupAdmin(admin.ModelAdmin):

@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
-from django.contrib.auth.models import Group, User
+from auth0.models import Group, User
 from sistema.models import *
 from smart_selects.db_fields import ChainedForeignKey
 
