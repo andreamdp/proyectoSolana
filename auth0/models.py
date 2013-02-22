@@ -1,9 +1,9 @@
 import datetime
 import urllib
-from solanaABM012 import auth0
+
 #from django.contrib import auth
 #from django.contrib.auth.signals import user_logged_in
-from solanaABM012.auth0.signals import user_logged_in
+from auth0.signals import user_logged_in
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from django.db.models.manager import EmptyManager
