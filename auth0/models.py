@@ -1,8 +1,9 @@
 import datetime
 import urllib
-
-from django.contrib import auth
-from django.contrib.auth.signals import user_logged_in
+from solanaABM012 import auth0
+#from django.contrib import auth
+#from django.contrib.auth.signals import user_logged_in
+from solanaABM012.auth0.signals import user_logged_in
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from django.db.models.manager import EmptyManager
@@ -159,7 +160,7 @@ class UserManager(models.Manager):
 def _user_get_all_permissions(user, obj):
     permissions = set()
     anon = user.is_anonymous()
-    for backend in auth.get_backends():
+    for backend in auth0.get_backends():
         if not anon or backend.supports_anonymous_user:
             if hasattr(backend, "get_all_permissions"):
                 if obj is not None:
@@ -175,7 +176,7 @@ def _user_get_all_permissions(user, obj):
 def _user_has_perm(user, perm, obj):
     anon = user.is_anonymous()
     active = user.is_active
-    for backend in auth.get_backends():
+    for backend in auth0.get_backends():
         if (not active and not anon and backend.supports_inactive_user) or \
                     (not anon or backend.supports_anonymous_user):
             if hasattr(backend, "has_perm"):
@@ -192,7 +193,7 @@ def _user_has_perm(user, perm, obj):
 def _user_has_module_perms(user, app_label):
     anon = user.is_anonymous()
     active = user.is_active
-    for backend in auth.get_backends():
+    for backend in auth0.get_backends():
         if (not active and not anon and backend.supports_inactive_user) or \
                     (not anon or backend.supports_anonymous_user):
             if hasattr(backend, "has_module_perms"):
@@ -305,7 +306,7 @@ class User(models.Model):
         are returned.
         """
         permissions = set()
-        for backend in auth.get_backends():
+        for backend in auth0.get_backends():
             if hasattr(backend, "get_group_permissions"):
                 if obj is not None:
                     if backend.supports_object_permissions:
