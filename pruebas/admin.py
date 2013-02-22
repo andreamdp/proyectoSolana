@@ -89,7 +89,6 @@ class PresuInline(admin.TabularInline):
 class SubCategoriaAdmin(admin.ModelAdmin):
     list_display = ('categoria','nombre')
 from django.forms import ModelForm
-from django.contrib.auth.models import User
 
 
 
