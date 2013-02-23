@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -140,7 +140,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'grappelli.context_processors.admin_template_path',
 )
 INSTALLED_APPS = (
-    'auth0',
+    #'auth0',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -1,5 +1,5 @@
 from django import forms
-from auth.models import User, Group
+from django.contrib.auth.models import User, Group
 from pruebas.models import Detalle
 
 
