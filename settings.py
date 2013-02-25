@@ -14,7 +14,8 @@ ADMINS = (
 MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
 import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
+#
+DATABASES['default'] =  dj_database_url.config()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -28,7 +29,7 @@ DATABASES = {
 
 
 	
-DATABASES = {'default': dj_database_url.config()} 
+#DATABASES = {'default': dj_database_url.config()} 
 #SOUTH_DATABASE_ADAPTERS = { 'default': "south.db.postgresql_psycopg2" } 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
