@@ -10,7 +10,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
-#import dj_database_url
+import dj_database_url
 #DATABASES['default'] =  dj_database_url.config()
 DATABASES = {
     'default': {
