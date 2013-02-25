@@ -15,7 +15,7 @@ MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
 import dj_database_url
 #
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
