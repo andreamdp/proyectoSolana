@@ -15,40 +15,9 @@ MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
 
 import os
-import sys
-import urlparse
 
-# Register database schemes in URLs.
-urlparse.uses_netloc.append('postgres')
-urlparse.uses_netloc.append('mysql')
-
-try:
-    if 'DATABASES' not in locals():
-        DATABASES = {}
-
-    if 'DATABASE_URL' in os.environ:
-        url = urlparse.urlparse(os.environ['DATABASE_URL'])
-
-        # Ensure default database exists.
-        DATABASES['default'] = DATABASES.get('default', {})
-
-        # Update with environment configuration.
-        DATABASES['default'].update({
-            'NAME': url.path[1:],
-            'USER': url.username,
-            'PASSWORD': url.password,
-            'HOST': url.hostname,
-            'PORT': url.port,
-        })
-        if url.scheme == 'postgres':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
-except Exception:
-    print 'Unexpected error:', sys.exc_info()
 	
-#DATABASES = {'default': dj_database_url.config()} 
+DATABASES = {'default': dj_database_url.config()} 
 #SOUTH_DATABASE_ADAPTERS = { 'default': "south.db.postgresql_psycopg2" } 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
