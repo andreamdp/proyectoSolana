@@ -10,7 +10,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
-
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -21,6 +22,10 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+
+	
+DATABASES = {'default': dj_database_url.config()} 
 #SOUTH_DATABASE_ADAPTERS = { 'default': "south.db.postgresql_psycopg2" } 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -189,8 +194,7 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
