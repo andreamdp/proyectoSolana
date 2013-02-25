@@ -89,3 +89,6 @@ wsgi-intercept==0.4
 wsgiref==0.1.2
 xkit==0.0.0
 zope.interface==3.6.1
+
+
+MySQL-python==1.2.3
