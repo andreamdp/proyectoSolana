@@ -21,25 +21,25 @@ CategoriaChoice = (
 
 class Categoria(models.Model):
  choice = (
-       # ('Estructura Hormigon', 'Estructura Hormigón'),
-       # ('Estructura Metalica', 'Estructura Metálica'),
-       # ('Cerramientos', 'Cerramientos'),
-#	('Cubierta Metalica', 'Cubierta Metálica'),
-#	('Entrepiso', 'Entrepiso'),
-#	('Instalaciones', 'Instalaciones'),
-#	('Varios', 'Varios'),
-#	('Subtotales', 'Subtotales'),
-        ('EH', 'Estructura Hormigón'),
-        ('EM', 'Estructura Metálica'),
-        ('C', 'Cerramientos'),
-	('CM', 'Cubierta Metálica'),#
-	('E', 'Entrepiso'),
-	('I', 'Instalaciones'),
-	('V', 'Varios'),
-	('S', 'Subtotales'),
+        ('Estructura Hormigon', 'Estructura Hormigón'),
+        ('Estructura Metalica', 'Estructura Metálica'),
+        ('Cerramientos', 'Cerramientos'),
+	('Cubierta Metalica', 'Cubierta Metálica'),
+	('Entrepiso', 'Entrepiso'),
+	('Instalaciones', 'Instalaciones'),
+	('Varios', 'Varios'),
+	('Subtotales', 'Subtotales'),
+#        ('EH', 'Estructura Hormigón'),
+#        ('EM', 'Estructura Metálica'),
+#        ('C', 'Cerramientos'),
+#	('CM', 'Cubierta Metálica'),#
+#	('E', 'Entrepiso'),
+#	('I', 'Instalaciones'),
+#	('V', 'Varios'),
+#	('S', 'Subtotales'),
     )
 
- categoria = models.CharField(max_length=2, choices=choice) 
+ categoria = models.CharField(max_length=32, choices=choice) 
  class Meta:
 		verbose_name = 'Categoria'        
 		verbose_name_plural = "Administrar Categorias"     
