@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-from auth0 import models
+from auth import models
 from sistema.models import *
 from clientes.models import *
 from django.forms import TextInput, Textarea
