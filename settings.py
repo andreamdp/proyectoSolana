@@ -13,11 +13,11 @@ MENU_CACHE_TIME = -1
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'Purple', # Or path to database file if using sqlite3.
-        'USER': '', # Not used with sqlite3.
-        'PASSWORD': '', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'ds1voc368igeg', # Or path to database file if using sqlite3.
+        'USER': 'lwwqalpdnilwfk', # Not used with sqlite3.
+        'PASSWORD': 'mEyy-NdwvxgnRR-E3iap3wyfmG', # Not used with sqlite3.
+        'HOST': 'ec2-54-243-228-241.compute-1.amazonaws.com', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432', # Set to empty string for default. Not used with sqlite3.
     }
 }
 
