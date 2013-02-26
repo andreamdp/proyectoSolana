@@ -1,0 +1,6 @@
+
+si se rompe la base, hacer 
+
+
+heroku addons:add heroku-postgresql
+heroku pg:promote HEROKU_POSTGRESQL_CYAN
