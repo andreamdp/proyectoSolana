@@ -4,38 +4,23 @@ PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
 MENU_CACHE_TIME = -1
-import dj_database_url
-#
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '', # Or path to database file if using sqlite3.
+        'USER': '', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
 }
-#DATABASES['default'] =  dj_database_url.config()
-#DATABASES['default'] = {
-#    'ENGINE': 'django.db.backends.mysql',
-#    'HOST': 'localhost',
-#    'USER': 'root',
-#    'NAME': 'solanaABM012',
-#    'PASSWORD': 'root',
-#    'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
-#}
-	
-#DATABASES = {'default': dj_database_url.config()} 
-SOUTH_DATABASE_ADAPTERS = { 'default': "south.db.postgresql_psycopg2" } 
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -107,7 +92,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+# 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -117,7 +102,7 @@ SECRET_KEY = 'nevdhr9!nryzh=i6%6p5v7!^jgoognkki$3&rn0ko*txw0ihkx'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+# 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,22 +119,22 @@ TEMPLATE_DIRS = (
  
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
-		'django.contrib.auth.context_processors.auth',
-                'django.core.context_processors.request', 
+'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.request',
                 'django.core.context_processors.debug',
                 'django.core.context_processors.i18n',
                 'django.core.context_processors.media',
                 'django.core.context_processors.static',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.request',     
+                'django.core.context_processors.request',
                 'snippets.1921.applist',
                
     # required by django.contrib.admin anyway
-#    'django.core.context_processors.request',   c 
+# 'django.core.context_processors.request', c
     #"django.core.context_processors.auth",
     # required by grappelli
-#    'django.contrib.auth.context_processors.auth',
-#    'django.core.context_processors.request',
+# 'django.contrib.auth.context_processors.auth',
+# 'django.core.context_processors.request',
     
     # required to render correct templates (grappelli+admin-tools or grappelli "standalone")
     #'grappelli.context_processors.admin_template_path',
@@ -166,7 +151,7 @@ INSTALLED_APPS = (
     'clientes',
     'pruebas',
     'geraldo',
-    #   'rosetta',
+    # 'rosetta',
     'grappelli',
     'grappelli.dashboard',
    # 'filebrowser',
@@ -201,6 +186,8 @@ LOGGING = {
         },
     }
 }
+
+# Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
