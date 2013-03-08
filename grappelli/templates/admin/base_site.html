@@ -1,15 +1,12 @@
 {% extends "admin/base.html" %}
-{% load i18n %}
-
+{% load i18n grp_tags %}
 {% block extrastyle %}{% load adminmedia %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/custom_admin.css" />{% endblock %}
 
 {% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
 
 {% block branding %}
-<h1 id="site-name">{% trans 'Django administration' %}</h1>
+    <h1 id="site-name">{% trans 'Django administration' %}</h1>
 {% endblock %}
-
-
 {% block navmenu %}
     {% if adm_app_list %}
     <div style="background: #EEE;width: 100%">
@@ -28,10 +25,18 @@
                    </ul>
                </li>
            {% endfor %}
+           <li>
+                <a href="">{{"Reportes"}}
+                <ul id="navmenu">
+                 <li><a href="/reporteClientes/">{% trans "Listado de Clientes" %}</a></li>
+                 <li><a href="/reporteObras/">{% trans "Listado de Obras" %}</a></li>
+                 <li><a href="/reporteCobros/">{% trans "Listado de Cobros" %}</a></li>
+                 <li><a href="/reporteCostos/">{% trans "Listado de Costos" %}</a></li>
+                 
+               </ul>
+           </li>
         </ul>
     </div>
     {% endif %}
 {% endblock %}
-
 {% block nav-global %}{% endblock %}
-

@@ -94,6 +94,6 @@ from django.forms import ModelForm
 
 #admin.site.register(Presupuesto,PresupuestoOptions)
 #admin.site.register(Categoria)
-admin.site.register(SubCategoria, SubCategoriaAdmin)
+#admin.site.register(SubCategoria, SubCategoriaAdmin)
 ##admin.site.register(B,B_Admin)
 #admin.site.register(Detalle, DetalleAdmin)

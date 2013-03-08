@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
 Module where grappelli dashboard modules classes are defined.
 """
@@ -11,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from django.utils.itercompat import is_iterable
 
-# GRAPPELLI IMPORTS
+# GRAPPELL IMPORTS
 from grappelli.dashboard.utils import AppListElementMixin
 
 
@@ -126,11 +124,9 @@ class DashboardModule(object):
         Return a string containing the css classes for the module.
         """
         
-        ret = ['grp-dashboard-module']
+        ret = ['dashboard-module']
         if self.collapsible:
-            ret.append('grp-collapse')
-            if not "grp-open" in self.css_classes and not "grp-closed" in self.css_classes:
-                ret.append('grp-open')
+            ret.append('collapsible')
         ret += self.css_classes
         return ' '.join(ret)
 
@@ -242,7 +238,7 @@ class AppList(DashboardModule, AppListElementMixin):
             model_dict = {}
             model_dict['title'] = capfirst(model._meta.verbose_name_plural)
             if perms['change']:
-                model_dict['admin_url'] = self._get_admin_change_url(model, context)
+                model_dict['change_url'] = self._get_admin_change_url(model, context)
             if perms['add']:
                 model_dict['add_url'] = self._get_admin_add_url(model, context)
             apps[app_label]['models'].append(model_dict)
@@ -280,7 +276,7 @@ class ModelList(DashboardModule, AppListElementMixin):
             model_dict = {}
             model_dict['title'] = capfirst(model._meta.verbose_name_plural)
             if perms['change']:
-                model_dict['admin_url'] = self._get_admin_change_url(model, context)
+                model_dict['change_url'] = self._get_admin_change_url(model, context)
             if perms['add']:
                 model_dict['add_url'] = self._get_admin_add_url(model, context)
             self.children.append(model_dict)
@@ -344,6 +340,8 @@ class RecentActions(DashboardModule):
             qs = qs.exclude(get_qset(self.exclude_list))
             
         self.children = qs.select_related('content_type', 'user')[:self.limit]
+        if not len(self.children):
+            self.pre_content = _('No recent actions.')
         self._initialized = True
 
 

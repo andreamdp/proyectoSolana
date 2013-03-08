@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 
 <!-- LOADING -->
-{% load i18n grp_tags log grp_dashboard_tags %}
+{% load i18n adminmedia grp_tags log grp_dashboard_tags %}
 
 <!-- JAVASCRIPTS -->
 {% block javascripts %}
@@ -9,9 +9,9 @@
     <script type="text/javascript" charset="utf-8">
         (function($) {
             $(document).ready(function() {
-                $("article#grp-content .grp-collapse").grp_collapsible();
+                $("div#content .collapse").grp_collapsible();
             });
-        })(grp.jQuery);
+        })(django.jQuery);
     </script>
 {% endblock %}
 
@@ -20,11 +20,7 @@
 {% block content-class %}content-grid{% endblock %}
 
 <!-- BREADCRUMBS -->
-{% block breadcrumbs %}
-    <ul class="grp-horizontal-list">
-        <li>{% trans "Home" %}</li>
-    </ul>
-{% endblock %}
+{% block breadcrumbs %}<div id="breadcrumbs">{% trans "Home" %}</div>{% endblock %}
 {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
 
 <!-- CONTENT -->

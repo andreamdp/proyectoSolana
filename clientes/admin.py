@@ -4,8 +4,8 @@ from auth import models
 from sistema.models import *
 from clientes.models import *
 from django.forms import TextInput, Textarea
-from pruebas.models import *
-from pruebas.admin import *
+#from pruebas.models import *
+#from pruebas.admin import *
 
 class TelefonoInline(admin.TabularInline):
     model = Telefono
@@ -151,6 +151,7 @@ class CobroInline(admin.TabularInline):
     }
 
 class ConjuntoObraOptions(admin.ModelAdmin):
+
 	list_display = ('nombre','cliente','ciudad','estado','getDirectorObra')
         list_filter = ('ciudad','estado',)
         list_display_links = list_display
@@ -166,10 +167,77 @@ class ConjuntoObraOptions(admin.ModelAdmin):
             return super(ConjuntoObraOptions, self).formfield_for_foreignkey(db_field, request, **kwargs)       	
 
 	inlines = [ObraInline,CobroInline]
-admin.site.register(Cobro)
-admin.site.register(ConjuntoObra,ConjuntoObraOptions)
+
+class DetalleInline(admin.TabularInline):
+    model = Detalle
+    fieldsets = (							#aca se podria definir el orden de las columnas
+		(None, {
+			'fields':('categoria','concepto','precio')
+			}),
+	        )
+
+    extra = 1  
+
+
+
+class DetalleAdmin(admin.ModelAdmin):
+ class Meta:
+        model = Detalle
+ list_display = ('precio','total')
+ 
+ def get_changelist(self, request):
+        return MyChangeList
+
+class PresupuestoOptions(admin.ModelAdmin):
+    class Meta:
+        model = Presupuesto
+   # search_fields = ['cliente']
+   # search_fields_verbose = ['cliente']
+    list_display = ('obra','cliente','totalPresupuesto')
+    list_filter = ('cliente__ciudad',)
+    list_display_links = list_display
+    search_fields = ('nombre', 'apellido', 'cliente_nro','cuit')
+    template = 'pruebas/tabular.html'
+#    readonly_fields = ('monto_obra',)
+   # formfield_overrides = {
+   #     models.TextField: {'widget': MarkItUpWidget},
+   # }
+    #readonly_fields = ('totalHormigonReal','totalMetalicaReal','totalCerramientoReal', 'totalCubiertaMetalicaReal','totalEntrepisoReal','totalInstalacionesReal', 'totalVariosReal',  )
+    fieldsets = (							#aca se podria definir el orden de las columnas
+		 (None, {
+			'fields':(('cliente','obra', 'total'),),
+			}),
+	         
+                 #(None, {
+	#		'fields':('categoria','concepto')
+	#		}),
+	         )
+        
+   
+    extra = 1  
+  #  form = PresupuestoForm
+    class Media:
+        css = {
+            'all': ("estilo.css",)
+     }
+   
+    #inlines = [CostoInline]
+    inlines = [DetalleInline]
+    
+
+class PresuInline(admin.TabularInline):
+    model = PresupuestoOptions
+    classes = ('collapse closed',)
+    
+
+    
+class SubCategoriaAdmin(admin.ModelAdmin):
+    list_display = ('categoria','nombre')
+
 admin.site.register(Cliente,ClienteOptions)
+admin.site.register(ConjuntoObra,ConjuntoObraOptions)
+admin.site.register(Cobro)
 admin.site.register(ConjuntoCosto,ConjuntoCostoOptions)
 admin.site.register(Presupuesto,PresupuestoOptions)
-
+admin.site.register(SubCategoria, SubCategoriaAdmin)
 

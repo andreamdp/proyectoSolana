@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import Group, User
 from sistema.models import *
 from smart_selects.db_fields import ChainedForeignKey
-
+from presupuesto import *
 # Create your models here.
 
 class Cliente(models.Model):       
@@ -183,3 +183,104 @@ class Cobro(models.Model):
     class Meta:
         verbose_name = "Cobro"
         verbose_name_plural = "Administrar Cobros"
+
+CategoriaChoice = (
+         ('EH', 'Estructura Hormigón'),
+         ('EM', 'Estructura Metálica'),
+         ('C', 'Cerramientos'),
+	 ('CM', 'Cubierta Metálica'),
+	 ('E', 'Entrepiso'),
+	 ('I', 'Instalaciones'),
+	 ('V', 'Varios'),
+	 ('S', 'Subtotales'),
+)
+
+class Categoria(models.Model):
+ choice = (
+        ('Estructura Hormigon', 'Estructura Hormigón'),
+        ('Estructura Metalica', 'Estructura Metálica'),
+        ('Cerramientos', 'Cerramientos'),
+	('Cubierta Metalica', 'Cubierta Metálica'),
+	('Entrepiso', 'Entrepiso'),
+	('Instalaciones', 'Instalaciones'),
+	('Varios', 'Varios'),
+	('Subtotales', 'Subtotales'),
+
+    )
+
+ categoria = models.CharField(max_length=32, choices=choice) 
+ class Meta:
+		verbose_name = 'Categoria'        
+		verbose_name_plural = "Administrar Categorias"     
+
+ def __unicode__(self):
+	        return u'%s' % (self.categoria)
+class SubCategoria(models.Model):
+       choice = (
+         ('EH', 'Estructura Hormigón'),
+         ('EM', 'Estructura Metálica'),
+         ('C', 'Cerramientos'),
+	 ('CM', 'Cubierta Metálica'),
+	 ('E', 'Entrepiso'),
+	 ('I', 'Instalaciones'),
+	 ('V', 'Varios'),
+	 ('S', 'Subtotales'),
+	)
+      
+       nombre = models.CharField(max_length=25)
+       categoria = models.ForeignKey(Categoria, related_name='+')
+      
+       class Meta:
+		verbose_name = 'SubCategoria'        
+		verbose_name_plural = "Administrar SubCategorias"
+       def __unicode__(self):
+	        return u'%s' % (self.nombre)
+
+
+
+
+class Presupuesto(models.Model):       
+	cliente = models.ForeignKey(Cliente, related_name='+')
+	obra = ChainedForeignKey(
+		ConjuntoObra, 
+		chained_field="cliente",
+		chained_model_field="cliente", 
+		show_all=False, 
+		auto_choose=True,
+		related_name ="+",
+    	)
+        total = models.IntegerField( null=True, blank=True)
+
+	class Meta:
+		verbose_name = 'Presupuesto'        
+		verbose_name_plural = "Administrar Presupuestos"
+
+
+
+        def totalPresupuesto(self):
+          c = Detalle.objects.filter(presupuesto=self.id)
+          return sum([detalle.precio for detalle in c ])
+	def __unicode__(self):
+	        return u'%s (%s)' % (self.cliente, self.obra)
+
+class Detalle(models.Model):
+        precio = models.FloatField('Precio', null=True, blank=True, default = 0.0)
+        categoria = models.ForeignKey(Categoria, related_name='+')
+	
+	concepto =  ChainedForeignKey(
+          SubCategoria, 
+          chained_field="categoria",
+          chained_model_field="categoria", 
+          show_all=False, 
+          auto_choose= True
+        )
+        presupuesto = models.ForeignKey(Presupuesto, related_name='+')
+	@property
+        def total(self):
+          return self.precio + 100
+
+        def __unicode__(self):
+	   return '%s' % (self.precio+20)
+
+	def __unicode__(self):
+	        return u'%s' % (self.categoria)
