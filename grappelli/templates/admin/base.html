@@ -78,7 +78,7 @@
         <!-- CONTENT -->
         <div id="content" class="{% block content-class %}{% endblock %}">
             {% block pretitle %}{% endblock %}
-            {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+            {% block content_title %}{% if title %}<h1> {{title}} </h1>{% endif %}{% endblock %}
             {% block object-tools %}{% endblock %}
             {% block content %}
                 {{ content }}

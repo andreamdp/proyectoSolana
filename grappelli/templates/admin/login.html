@@ -1,10 +1,8 @@
 {% extends "admin/base_site.html" %}
-
 <!-- LOADING -->
-{% load url from future %}
+
 {% load i18n grp_tags %}
 <!-- BODYCLASS -->
-{% block bodyclass %}grp-login{% endblock %}
 
 <!-- EXTRAHEAD-->
 {% block extrahead %}
@@ -20,8 +18,14 @@
 
 <!-- CONTENT -->
 {% block content %}
+
+
+<div style="text-align: center; position: relative;top: 40px; left: 400px; rigth: 300px;  width: 70%; ">
+  
+
+
     <div class="container-flexible login">
-        <div class="column span-12 centered">
+        <divclass="column span-12 centered">
             {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
                 <p class="errornote">
                     {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
@@ -61,4 +65,6 @@
             </form>
         </div>
     </div>
+</div>
+
 {% endblock %}

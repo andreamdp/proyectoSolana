@@ -163,7 +163,7 @@ class ConjuntoObraOptions(admin.ModelAdmin):
 	)
 	def formfield_for_foreignkey(self, db_field, request, **kwargs):
             if db_field.name == 'director_obra':
-        	kwargs['queryset'] = User.objects.filter(groups__name='director de Obra')
+        	kwargs['queryset'] = User.objects.all()#filter(groups__name='director de Obra')
             return super(ConjuntoObraOptions, self).formfield_for_foreignkey(db_field, request, **kwargs)       	
 
 	inlines = [ObraInline,CobroInline]
@@ -205,7 +205,7 @@ class PresupuestoOptions(admin.ModelAdmin):
     #readonly_fields = ('totalHormigonReal','totalMetalicaReal','totalCerramientoReal', 'totalCubiertaMetalicaReal','totalEntrepisoReal','totalInstalacionesReal', 'totalVariosReal',  )
     fieldsets = (							#aca se podria definir el orden de las columnas
 		 (None, {
-			'fields':(('cliente','obra', 'total'),),
+			'fields':(('cliente','obra'),),#, 'total'
 			}),
 	         
                  #(None, {
@@ -240,4 +240,5 @@ admin.site.register(Cobro)
 admin.site.register(ConjuntoCosto,ConjuntoCostoOptions)
 admin.site.register(Presupuesto,PresupuestoOptions)
 admin.site.register(SubCategoria, SubCategoriaAdmin)
+#admin.site.register(Categoria)
 
