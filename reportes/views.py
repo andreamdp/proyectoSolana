@@ -8,13 +8,13 @@ from reportlab.lib.colors import navy, yellow, red, black, blue
 from django.http import HttpResponse
 from geraldo import Report, DetailBand, ObjectValue
 from geraldo.generators import PDFGenerator
-from solanaABM012.geraldo.utils import cm
+from geraldo.utils import cm
 
 from clientes.models import ConjuntoObra, Cliente, Obra, Cobro, Costo
 
-from solanaABM012.geraldo import Report, DetailBand, ObjectValue
-from solanaABM012.geraldo.utils import cm
-from solanaABM012.geraldo.generators import PDFGenerator
+from geraldo import Report, DetailBand, ObjectValue
+from geraldo.utils import cm
+from geraldo.generators import PDFGenerator
 from django.core.exceptions import PermissionDenied
 from reportlab.lib.pagesizes import legal
 from geraldo import Report, ReportBand, Label, ObjectValue, SystemField,\
